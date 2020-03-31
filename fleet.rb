@@ -12,9 +12,8 @@ class Fleet
     def load_from_file
         json_data = File.read("list.json")
         ruby_objects = JSON.parse(json_data)
-        pp ruby_objects
-        for obj in ruby_objects
-           puts obj[model]
+        ruby_objects.each do |car|
+            add(Auto.new(car['mark'],car["model"],Integer(car["year"]),Integer(car["consumption"])))
         end
     end
 
